@@ -124,26 +124,25 @@ local function list_warps(name,index,list)
 	if index == 1 then
 		warp_table_start = 1
 	end
-	local warp_table_stop = (index*10)-1
 	print(warp_table_start)
-	local nlines = 1
+	local warp_table_stop = (index*10)-1
+	local nlines = 0
 	local warp_list = ""
 	for line in warp_file:lines() do -- we show 9 elements of the table
-		if nlines >= warp_table_start and nlines <= warp_table_stop then
-			line = string.split(line,"=")
-			if line[1] then -- avoid empty lines
+		line = string.split(line,"=")
+		if line[1] then -- avoid empty lines
+			nlines = nlines + 1
+			if nlines >= warp_table_start and nlines <= warp_table_stop then
 				if warp_list then
-					print(dump(line))
 					warp_list = warp_list..line[1]
 				else
 					warp_list = line[1]
 				end
-				if nlines%3 == 0 then -- newline after 3 entries
+				if nlines%3 == 0 and nlines ~= warp_table_stop then -- newline after 3 entries
 					warp_list = warp_list.."\n"
 				end
 			end
 		end
-		nlines = nlines + 1
 	end
 	warp_list = warp_list.."\n ---- page "..index.."/"..math.floor((nlines/9)+0.9).." ---- "
 	minetest.chat_send_player(name,warp_list)
