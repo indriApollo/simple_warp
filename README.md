@@ -19,6 +19,9 @@ A warp mod for Minetest
 - ```warpown``` (can set/del private locations)
 - ```warpall``` (can set/del public locations)
 
+**Note :**
+The public locations have primary name claim, that means if you use /setwarp test and 'test' is already used publicly, the mod will throw an error. But if you had already set 'test' as private, /setwarpall test will ignore your location and you'll end up with conflicting names (in that case /warp test will always move you to the public location). An easy solution is to prefix the public locations.
+
 **Depends :** none
 
 **Licence :** lgpl 2.1
