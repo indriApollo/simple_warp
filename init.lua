@@ -21,4 +21,4 @@ end
 loadmodule(mod_path .. "/functions.lua")
 loadmodule(mod_path .. "/register.lua")
 
-minetest.log("info","["..mod_name.."] Warps enabled")
+minetest.log("info","["..mod_name.."] mod enabled")
