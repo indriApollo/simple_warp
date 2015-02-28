@@ -16,6 +16,9 @@ minetest.register_chatcommand("setwarp", {
 		if not player then
 			return false, "Player not found"
 		end
+		if param == "" then
+			return false, "Missing warp name"
+		end
 		local pos = vector.round(player:getpos())
 		simple_warp.set_warp(name,pos,param,name)
 	end,
@@ -30,6 +33,9 @@ minetest.register_chatcommand("delwarp", {
 		if not player then
 			return false, "Player not found"
 		end
+		if param == "" then
+			return false, "Missing warp name"
+		end
 		simple_warp.del_warp(name,param,name)
 	end,
 })
@@ -42,6 +48,9 @@ minetest.register_chatcommand("setwarpall", {
 		local player = minetest.get_player_by_name(name)
 		if not player then
 			return false, "Player not found"
+		end
+		if param == "" then
+			return false, "Missing warp name"
 		end
 		local pos = vector.round(player:getpos())
 		simple_warp.set_warp(name,pos,param,"warp_all")
@@ -56,6 +65,9 @@ minetest.register_chatcommand("delwarpall", {
 		local player = minetest.get_player_by_name(name)
 		if not player then
 			return false, "Player not found"
+		end
+		if param == "" then
+			return false, "Missing warp name"
 		end
 		simple_warp.del_warp(name,param,"warp_all")
 	end,
@@ -107,6 +119,9 @@ minetest.register_chatcommand("warp", {
 		local player = minetest.get_player_by_name(name)
 		if not player then
 			return false, "Player not found"
+		end
+		if param == "" then
+			return false, "Missing warp name"
 		end
 		simple_warp.warp(name,param)
 	end,
